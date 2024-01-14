@@ -35,8 +35,8 @@ import org.verapdf.report.FeaturesReport;
  * @author Sergey Shemyakov
  */
 class SingleLineResultHandler extends AbstractBatchHandler {
-	private static final String pass = "PASS "; //$NON-NLS-1$
-	private static final String fail = "FAIL "; //$NON-NLS-1$
+	private static final String pass = "NON DEVIATION "; //$NON-NLS-1$
+	private static final String fail = "DEVIATION "; //$NON-NLS-1$
 	private static final String ioExcepMess = "IOException caught when writing to output stream"; //$NON-NLS-1$
 	private static final String parseExcepMessTmpl = "%s does not appear to be a valid PDF file and could not be parsed.\n";
 	private static final String pdfEncryptMessTmpl = "%s appears to be an encrypted PDF file and could not be processed.\n";

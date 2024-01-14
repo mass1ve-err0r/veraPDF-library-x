@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-@XmlRootElement(name = "validationReports")
+@XmlRootElement(name = "arlingtonPDFModelCheckingReports")
 final class ValidationBatchSummaryImpl extends AbstractBatchJobSummary implements ValidationBatchSummary {
 	static final ValidationBatchSummary DEFAULT = new ValidationBatchSummaryImpl();
 	@XmlAttribute
