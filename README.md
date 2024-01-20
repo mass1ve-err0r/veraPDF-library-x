@@ -1,5 +1,8 @@
-veraPDF-library
-===============
+# veraPDF-library-x
+> [!WARNING]  
+> This fork makes use of veraPDF's dual-licensing clause and is hereby licensed under the **MPL-2.0**.
+
+---
 *Industry Supported PDF/A and PDF/UA Validation*
 
 [![Build Status](https://jenkins.openpreservation.org/job/veraPDF/job/1.25/job/library/badge/icon)](https://jenkins.openpreservation.org/job/veraPDF/job/1.25/job/library/ "OPF Jenkins")
