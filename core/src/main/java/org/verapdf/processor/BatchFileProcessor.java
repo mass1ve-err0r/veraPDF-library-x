@@ -28,6 +28,7 @@ import org.verapdf.core.utils.FileUtils;
 import org.verapdf.core.utils.LogsFileHandler;
 import org.verapdf.processor.reports.ItemDetails;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -81,6 +82,21 @@ public final class BatchFileProcessor extends AbstractBatchProcessor {
 				logger.log(Level.SEVERE, badItemMessage(item, false));
 			} else if (FileUtils.hasExtNoCase(item.getName(), "zip")) {
 				processArchive(item);
+			} else {
+				processItem(item);
+			}
+		}
+	}
+
+	@Override
+	protected void processList2(List<? extends Pair<String, byte[]>> toProcess) throws VeraPDFException {
+		configLogs();
+		for (Pair<String, byte[]> item: toProcess) {
+			if (item == null || item.second().length == 0) {
+				logger.log(Level.SEVERE, badItemMessage(item, false));
+			} else if (FileUtils.hasExtNoCase(item.first(), "zip")) {
+				//processArchive(item);
+				throw new UnsupportedOperationException("Not implemented yet.");
 			} else {
 				processItem(item);
 			}
@@ -168,12 +184,32 @@ public final class BatchFileProcessor extends AbstractBatchProcessor {
 		this.processResult(result, this.processor.getConfig().getValidatorConfig().isLogsEnabled());
 	}
 
+	private void processItem(final Pair<String, byte[]> item) throws VeraPDFException {
+		debugAndLog(item.first());
+
+		ItemDetails details = ItemDetails.fromValues(item.first(), item.second().length);
+		ByteArrayInputStream bais = new ByteArrayInputStream(item.second());
+
+		ProcessorResult result = this.processor.process(details, bais);
+
+		this.processResult(result, this.processor.getConfig().getValidatorConfig().isLogsEnabled());
+	}
+
 	private static String badItemMessage(final File item, final boolean isDir) {
 		String itemType = isDir ? "directory" : "file"; //$NON-NLS-1$ //$NON-NLS-2$
 		if (item == null)
 			return "Null " + itemType + " item passed for processing."; //$NON-NLS-1$ //$NON-NLS-2$
 		final String rootMessage = "Couldn't process: " + item.getAbsolutePath() + " is not a "; //$NON-NLS-1$ //$NON-NLS-2$
 		final String messageTrail = (item.canRead()) ? itemType + "." : "readable " + itemType + "."; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		return rootMessage + messageTrail;
+	}
+
+	private static String badItemMessage(final Pair<String, byte[]> item, final boolean isDir) {
+		String itemType = isDir ? "directory" : "file"; //$NON-NLS-1$ //$NON-NLS-2$
+		if (item == null)
+			return "Null " + itemType + " item passed for processing."; //$NON-NLS-1$ //$NON-NLS-2$
+		final String rootMessage = "Couldn't process: " + item.first() + " is not a "; //$NON-NLS-1$ //$NON-NLS-2$
+		final String messageTrail = (item.second().length != 0) ? itemType + "." : "readable " + itemType + "."; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		return rootMessage + messageTrail;
 	}
 }

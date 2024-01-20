@@ -5,18 +5,12 @@
     Copyright (c) 2015, veraPDF Consortium <info@verapdf.org>
     All rights reserved.
 
-    veraPDF PDF/A Validation Library is free software: you can redistribute it and/or modify
-    it under the terms of either:
-
-    The GNU General public license GPLv3+.
-    You should have received a copy of the GNU General Public License
-    along with veraPDF PDF/A Validation Library as the LICENSE.GPL file in the root of the source
-    tree.  If not, see http://www.gnu.org/licenses/ or
-    https://www.gnu.org/licenses/gpl-3.0.en.html.
+    Fork by Saadat Baig, <me@saadat.dev>
+    This fork is licensed under the following license:
 
     The Mozilla Public License MPLv2+.
     You should have received a copy of the Mozilla Public License along with
-    veraPDF PDF/A Validation Library as the LICENSE.MPL file in the root of the source tree.
+    veraPDF Library core as the LICENSE.MPL file in the root of the source tree.
     If a copy of the MPL was not distributed with this file, you can obtain one at
     http://mozilla.org/MPL/2.0/.
 
@@ -28,15 +22,15 @@
   <parent>
     <groupId>org.verapdf</groupId>
     <artifactId>verapdf-parent</artifactId>
-    <version>1.25.1</version>
+    <version>1.25.2</version>
   </parent>
 
   <groupId>org.verapdf</groupId>
   <artifactId>verapdf-library</artifactId>
-  <version>1.25.0-SNAPSHOT</version>
+  <version>1.25.9-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>veraPDF PDF/A Validation Library</name>
+  <name>veraPDF PDF/A Validation Library X</name>
   <description>veraPDF PDF/A Validation API and core types.</description>
 
   <repositories>
@@ -66,9 +60,9 @@
   </modules>
 
   <scm>
-    <url>https://github.com/veraPDF/veraPDF-library/</url>
-    <connection>scm:git:https://github.com/veraPDF/veraPDF-library.git</connection>
-    <developerConnection>scm:git:git@github.com:veraPDF/veraPDF-library.git</developerConnection>
+    <url>https://github.com/mass1ve-err0r/veraPDF-library-x</url>
+    <connection>scm:git:https://github.com/mass1ve-err0r/veraPDF-library-x.git</connection>
+    <developerConnection>scm:git:git@github.com:mass1ve-err0r/veraPDF-library-x.git</developerConnection>
   </scm>
 
   <properties>

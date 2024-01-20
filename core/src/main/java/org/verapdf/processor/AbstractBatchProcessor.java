@@ -106,6 +106,16 @@ public abstract class AbstractBatchProcessor implements BatchProcessor {
 	}
 
 	@Override
+	public BatchSummary process2(final List<? extends Pair<String, byte[]>> toProcess, final BatchProcessingHandler resultHandler)
+			throws VeraPDFException {
+		this.initialise(resultHandler);
+		this.handler.handleBatchStart(this.processor.getConfig());
+
+		processList2(toProcess);
+		return finishBatch();
+	}
+
+	@Override
 	public BatchSummary process(ItemDetails itemDetails, InputStream stream, BatchProcessingHandler resultHandler)
 			throws VeraPDFException {
 		this.initialise(resultHandler);
@@ -117,6 +127,10 @@ public abstract class AbstractBatchProcessor implements BatchProcessor {
 	protected abstract void processContainer(final File container, final boolean recurse) throws VeraPDFException;
 
 	protected abstract void processList(final List<? extends File> toProcess) throws VeraPDFException;
+
+	protected void processList2(final List<? extends Pair<String, byte[]>> toProcess) throws VeraPDFException {
+		throw new UnsupportedOperationException("Not implemented by default.");
+	};
 
 	protected abstract void process(ItemDetails fileDetails, final InputStream item) throws VeraPDFException;
 

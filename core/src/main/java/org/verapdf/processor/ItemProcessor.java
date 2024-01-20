@@ -55,4 +55,9 @@ public interface ItemProcessor extends Processor {
 	 *             if the file cannot be found or opened.
 	 */
 	public ProcessorResult process(File toProcess) throws VeraPDFException;
+
+	default ProcessorResult process(Pair<String, byte[]> toProcess) throws VeraPDFException {
+		throw new UnsupportedOperationException("Not implemented by default.");
+	};
+
 }

@@ -58,6 +58,8 @@ public interface BatchProcessor extends Processor {
 	public BatchSummary process(ItemDetails itemDetails, InputStream stream, BatchProcessingHandler resultHandler)
 			throws VeraPDFException;
 
+	BatchSummary process2(List<? extends Pair<String, byte[]>> toProcess, BatchProcessingHandler resultHandler) throws VeraPDFException;
+
 	/**
 	 * Process all .pdf files in a directory, optionally recursively.
 	 * 
